@@ -37,9 +37,8 @@ public class FragmentGeological extends Fragment {
         RecyclerView.LayoutManager layMan = new LinearLayoutManager(this.getContext());
         myRecView.setLayoutManager(layMan);
 
-        RecyclerView.Adapter myRecAdapter = new AdapterGeological(modelList);
+        RecyclerView.Adapter myRecAdapter = new AdapterGeological(requireContext(), modelList);
         myRecView.setAdapter(myRecAdapter);
-
 
         return v;
     }

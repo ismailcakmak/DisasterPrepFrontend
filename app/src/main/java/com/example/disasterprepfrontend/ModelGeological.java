@@ -1,6 +1,8 @@
 package com.example.disasterprepfrontend;
 
-public class ModelGeological {
+import java.io.Serializable;
+
+public class ModelGeological implements Serializable {
 
     private String name;
     private String desc;
