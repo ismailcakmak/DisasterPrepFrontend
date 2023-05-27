@@ -1,8 +1,10 @@
 package com.example.disasterprepfrontend;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +38,24 @@ public class MainActivity extends AppCompatActivity {
         geologicalDesc.add("Geological Hazard - Depressions or cavities in the ground caused by the collapse of surface materials into underground voids, often resulting from factors such as dissolved rocks, water level changes, or human activities.d");
         geologicalDesc.add("Geological Hazard - Explosive release of molten rock (magma), gases, and other materials from a volcano, often accompanied by ash clouds, lava flows, and volcanic gases.");
 
-        GeologicalAdapter adapter = new GeologicalAdapter(geologicalImages,geologicalNames,geologicalDesc);
+        List<ModelGeological> modelList = new ArrayList<>();
+        for (int i = 0; i<5; i++) {
+            modelList.add(new ModelGeological(geologicalImages.get(i),geologicalNames.get(i),geologicalDesc.get(i)));
+        }
 
+
+        Button geoButton = findViewById(R.id.btn_geo);
+        Button waterButton = findViewById(R.id.btn_water);
+        Button weatherButton = findViewById(R.id.btn_weather);
+
+
+        geoButton.setOnClickListener(v -> {
+            FragmentGeological geoFrament = new FragmentGeological(modelList);
+            FragmentTransaction trans  = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.framelayout, geoFrament);
+            trans.commit();
+
+        });
 
 
     }

@@ -11,37 +11,35 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class GeologicalAdapter extends RecyclerView.Adapter {
+public class AdapterGeological extends RecyclerView.Adapter<AdapterGeological.MyViewHolder> {
 
-    List<Integer> images;
-    List<String> nameList;
-    List<String> descList;
+    List<ModelGeological> modelList;
 
-    public GeologicalAdapter(List<Integer> list, List<String> nameList, List<String> descList){
-        images = list;
-        this.nameList = nameList;
-        this.descList = descList;
-
+    public AdapterGeological(List<ModelGeological> modelList) {
+        this.modelList = modelList;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.geological_row, parent, false);
         MyViewHolder holder = new MyViewHolder(root);
 
-        return null;
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.description.setText(modelList.get(position).getDesc());
+        holder.imgview.setImageResource(modelList.get(position).getImage());
+        holder.name.setText(modelList.get(position).getName());
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return modelList.size();
     }
 
 
@@ -51,18 +49,13 @@ public class GeologicalAdapter extends RecyclerView.Adapter {
         TextView name;
         TextView description;
 
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imgview = itemView.findViewById(R.id.geo_row_img);
             name = itemView.findViewById(R.id.geo_row_name);
             description = itemView.findViewById(R.id.geo_row_desc);
-        }
-
-        public void bindData(int image, String myname, String desc) {
-            imgview.setImageResource(image);
-            name.setText(myname);
-            description.setText(desc);
         }
     }
 

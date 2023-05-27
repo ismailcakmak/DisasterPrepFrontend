@@ -4,9 +4,10 @@
     android:id="@+id/geological_frg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Geological">
+    tools:context=".FragmentGeological">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/geo_rec_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>
