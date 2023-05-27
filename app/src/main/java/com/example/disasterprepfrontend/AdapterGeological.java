@@ -22,8 +22,6 @@ public class AdapterGeological extends RecyclerView.Adapter<AdapterGeological.My
     AdapterGeologicalListener listener;
     Context context;
 
-
-
     interface AdapterGeologicalListener{
         public void clicked(ModelGeological model);
     }
