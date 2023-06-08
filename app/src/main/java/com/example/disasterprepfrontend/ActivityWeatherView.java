@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ActivityWaterView extends AppCompatActivity {
+public class ActivityWeatherView extends AppCompatActivity {
 
-    public ActivityWaterView() {
+    public ActivityWeatherView() {
 
     }
 
@@ -28,20 +28,20 @@ public class ActivityWaterView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_water_view);
+        setContentView(R.layout.activity_weather_view);
 
         ModelDisaster receivedModel = (ModelDisaster) getIntent().getSerializableExtra("model");
 
 
-        ImageView imgview = findViewById(R.id.imgview_act3);
-        TextView name = findViewById(R.id.name_act3);
-        desc = findViewById(R.id.desc_act3);
+        ImageView imgview = findViewById(R.id.imgview_act4);
+        TextView name = findViewById(R.id.name_act4);
+        desc = findViewById(R.id.desc_act4);
 
-        box1 = findViewById(R.id.water_checkBox1);
-        box2 = findViewById(R.id.water_checkBox2);
-        box3 = findViewById(R.id.water_checkBox3);
-        box4 = findViewById(R.id.water_checkBox4);
-        box5 = findViewById(R.id.water_checkBox5);
+        box1 = findViewById(R.id.weather_checkBox1);
+        box2 = findViewById(R.id.weather_checkBox2);
+        box3 = findViewById(R.id.weather_checkBox3);
+        box4 = findViewById(R.id.weather_checkBox4);
+        box5 = findViewById(R.id.weather_checkBox5);
 
 
 
@@ -61,13 +61,11 @@ public class ActivityWaterView extends AppCompatActivity {
         }
 
 
-
         box1.setText(targetObject.checklist.get(0));
         box2.setText(targetObject.checklist.get(1));
         box3.setText(targetObject.checklist.get(2));
         box4.setText(targetObject.checklist.get(3));
         box5.setText(targetObject.checklist.get(4));
-
 
         if(targetObject.checklist.get(0).charAt(targetObject.checklist.get(0).length()-1) == '1')
             box1.setChecked(true);

@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/geo_row_lyt"
+    android:id="@+id/weather_row_lyt"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:selectableItemBackground"
@@ -16,7 +16,7 @@
 
 
         <ImageView
-            android:id="@+id/geo_row_img"
+            android:id="@+id/weather_row_img"
             android:layout_width="81dp"
             android:layout_height="142dp"
             android:contentDescription="@null"
@@ -29,14 +29,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/geo_row_desc"
+                android:id="@+id/weather_row_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Disaster"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/geo_row_name"
+                android:id="@+id/weather_row_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Disaster Description" />
@@ -48,7 +48,7 @@
                 android:text="Preparedness Level :" />
 
             <ProgressBar
-                android:id="@+id/progressBar"
+                android:id="@+id/weather_progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

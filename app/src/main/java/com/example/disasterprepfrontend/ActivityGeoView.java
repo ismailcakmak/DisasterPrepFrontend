@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -40,6 +43,8 @@ public class ActivityGeoView extends AppCompatActivity {
         setContentView(R.layout.activity_geo_view);
 
         ModelDisaster receivedModel = (ModelDisaster) getIntent().getSerializableExtra("model");
+        Handler refreshHandler = getIntent().getParcelableExtra("handler");
+
 
 
         ImageView imgview = findViewById(R.id.imgview_act2);
@@ -51,7 +56,6 @@ public class ActivityGeoView extends AppCompatActivity {
         box3 = findViewById(R.id.checkBox3);
         box4 = findViewById(R.id.checkBox4);
         box5 = findViewById(R.id.checkBox5);
-
 
 
         imgview.setImageResource(receivedModel.getImage());
@@ -68,6 +72,14 @@ public class ActivityGeoView extends AppCompatActivity {
                 break;  // Exit the loop once the object is found
             }
         }
+
+
+
+        box1.setText(targetObject.checklist.get(0));
+        box2.setText(targetObject.checklist.get(1));
+        box3.setText(targetObject.checklist.get(2));
+        box4.setText(targetObject.checklist.get(3));
+        box5.setText(targetObject.checklist.get(4));
 
 
         if(targetObject.checklist.get(0).charAt(targetObject.checklist.get(0).length()-1) == '1')

@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FragmentWater extends Fragment {
+public class FragmentWeather extends Fragment {
 
     List<ModelDisaster> modelList;
 
-    public FragmentWater(List<ModelDisaster> modelList) {
+    public FragmentWeather(List<ModelDisaster> modelList) {
         this.modelList = modelList;
     }
 
@@ -28,16 +28,16 @@ public class FragmentWater extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_water, container, false);
+        View v = inflater.inflate(R.layout.fragment_weather, container, false);
 
-        RecyclerView myRecView = v.findViewById(R.id.water_rec_view);
+        RecyclerView myRecView = v.findViewById(R.id.weather_rec_view);
 
         RecyclerView.LayoutManager layMan = new LinearLayoutManager(this.getContext());
         myRecView.setLayoutManager(layMan);
 
         ApplicationClass application = (ApplicationClass) requireActivity().getApplication();
 
-        RecyclerView.Adapter myRecAdapter = new AdapterWater(requireContext(), application, modelList);
+        RecyclerView.Adapter myRecAdapter = new AdapterWeather(requireContext(), application, modelList);
         myRecView.setAdapter(myRecAdapter);
 
         return v;

@@ -1,6 +1,8 @@
 package com.example.disasterprepfrontend;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +18,12 @@ import java.util.List;
 
 public class FragmentGeological extends Fragment {
 
-    List<ModelDisaster> modelList = new ArrayList<>();
-    List<ModelChecklist> checklistList;
+    List<ModelDisaster> modelList;
 
-    public FragmentGeological(List<ModelDisaster> modelList, List<ModelChecklist> checklistList) {
-        this.checklistList = checklistList;
+    public FragmentGeological(List<ModelDisaster> modelList) {
         this.modelList = modelList;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,8 +36,10 @@ public class FragmentGeological extends Fragment {
         RecyclerView.LayoutManager layMan = new LinearLayoutManager(this.getContext());
         myRecView.setLayoutManager(layMan);
 
-        RecyclerView.Adapter myRecAdapter = new AdapterGeological(requireContext(), modelList, checklistList);
+        ApplicationClass application = (ApplicationClass) requireActivity().getApplication();
+        RecyclerView.Adapter myRecAdapter = new AdapterGeological(requireContext(),application, modelList);
         myRecView.setAdapter(myRecAdapter);
+
 
         return v;
     }

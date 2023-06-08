@@ -15,33 +15,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdapterWater extends RecyclerView.Adapter<AdapterWater.MyViewHolder> {
+public class AdapterWeather extends RecyclerView.Adapter<AdapterWeather.MyViewHolder> {
 
     List<ModelDisaster> modelList;
-    AdapterWater.AdapteWaterListener listener;
+    AdapterWeather.AdapterWeatherListener listener;
     ApplicationClass app;
 
 
-    interface AdapteWaterListener{
-        public void clicked(ModelDisaster model,ModelChecklist checklist);
+    interface AdapterWeatherListener{
+        public void clicked(ModelDisaster model);
     }
 
 
-    AdapterWater(Context context, ApplicationClass app, List<ModelDisaster> modelList) {
+    AdapterWeather(Context context, ApplicationClass app, List<ModelDisaster> modelList) {
         this.modelList = modelList;
         this.app = app;
 
 
-        listener = new AdapteWaterListener() {
-            @Override
-            public void clicked(ModelDisaster model, ModelChecklist checklist) {
+        listener = new AdapterWeatherListener() {
 
-                Intent i = new Intent(context, ActivityWaterView.class);
+            @Override
+            public void clicked(ModelDisaster model) {
+
+                Intent i = new Intent(context, ActivityWeatherView.class);
                 i.putExtra("model", model);
                 context.startActivity(i);
 
             }
-
         };
 
     }
@@ -62,7 +62,7 @@ public class AdapterWater extends RecyclerView.Adapter<AdapterWater.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.water_row, parent, false);
+        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.weather_row, parent, false);
         MyViewHolder holder = new MyViewHolder(root);
 
         return holder;
@@ -71,7 +71,7 @@ public class AdapterWater extends RecyclerView.Adapter<AdapterWater.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        int doneCount = getDoneChecklistCount(app.checklistsList.get(position+5).checklist);
+        int doneCount = getDoneChecklistCount(app.checklistsList.get(position+9).checklist);
         int progress = (int) ((doneCount / (float) 5) * 100);
 
         holder.prgbar.setProgress(progress);
@@ -80,7 +80,7 @@ public class AdapterWater extends RecyclerView.Adapter<AdapterWater.MyViewHolder
         holder.name.setText(modelList.get(position).getDesc());
 
         holder.root.setOnClickListener(v->{
-            listener.clicked(modelList.get(position), app.checklistsList.get(position));
+            listener.clicked(modelList.get(position));
         });
 
     }
@@ -106,11 +106,11 @@ public class AdapterWater extends RecyclerView.Adapter<AdapterWater.MyViewHolder
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            prgbar = itemView.findViewById(R.id.water_progressBar);
-            root = itemView.findViewById(R.id.water_row_lyt);
-            imgview = itemView.findViewById(R.id.water_row_img);
-            name = itemView.findViewById(R.id.water_row_name);
-            description = itemView.findViewById(R.id.water_row_desc);
+            prgbar = itemView.findViewById(R.id.weather_progressBar);
+            root = itemView.findViewById(R.id.weather_row_lyt);
+            imgview = itemView.findViewById(R.id.weather_row_img);
+            name = itemView.findViewById(R.id.weather_row_name);
+            description = itemView.findViewById(R.id.weather_row_desc);
         }
     }
 

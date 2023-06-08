@@ -41,6 +41,19 @@
                 android:layout_height="wrap_content"
                 android:text="Disaster Description" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preparedness Level :" />
+
+            <ProgressBar
+                android:id="@+id/water_progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
         </LinearLayout>
 
         <View
