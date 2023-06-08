@@ -53,6 +53,9 @@ public class ActivityWeatherView extends AppCompatActivity {
         ApplicationClass app = (ApplicationClass) this.getApplication();
 
 
+        imgview.setImageResource(app.map.get(name.getText()));
+
+
         for (ModelChecklist model: app.checklistsList) {
             if (model.getDisasterType().equals(name.getText())) {
                 targetObject = model;
@@ -66,6 +69,13 @@ public class ActivityWeatherView extends AppCompatActivity {
         box3.setText(targetObject.checklist.get(2));
         box4.setText(targetObject.checklist.get(3));
         box5.setText(targetObject.checklist.get(4));
+
+
+        TextView contact1 = findViewById(R.id.cont1);
+        contact1.setText(app.contactList.get(4).getContactName() + " : " + app.contactList.get(4).getContactPhoneNumber());
+
+        TextView contact2= findViewById(R.id.cont2);
+        contact2.setText(app.contactList.get(5).getContactName() + " : " + app.contactList.get(5).getContactPhoneNumber());
 
         if(targetObject.checklist.get(0).charAt(targetObject.checklist.get(0).length()-1) == '1')
             box1.setChecked(true);

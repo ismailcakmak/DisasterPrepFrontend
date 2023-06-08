@@ -76,7 +76,7 @@ public class AdapterWeather extends RecyclerView.Adapter<AdapterWeather.MyViewHo
 
         holder.prgbar.setProgress(progress);
         holder.description.setText(modelList.get(position).getName());
-        holder.imgview.setImageResource(modelList.get(position).getImage());
+        holder.imgview.setImageResource(app.map.get(modelList.get(position).getName()));
         holder.name.setText(modelList.get(position).getDesc());
 
         holder.root.setOnClickListener(v->{

@@ -75,7 +75,7 @@ public class AdapterGeological extends RecyclerView.Adapter<AdapterGeological.My
 
         holder.prgbar.setProgress(progress);
         holder.description.setText(modelList.get(position).getName());
-        //holder.imgview.setImageResource(app.myMap.get(modelList.get(position).getName()));
+        holder.imgview.setImageResource(app.map.get(modelList.get(position).getName()));
         holder.name.setText(modelList.get(position).getDesc());
 
         holder.root.setOnClickListener(v->{

@@ -26,8 +26,12 @@ public class ActivityWaterView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
+
+        ApplicationClass app = (ApplicationClass) this.getApplication();
+
+
         setContentView(R.layout.activity_water_view);
 
         ModelDisaster receivedModel = (ModelDisaster) getIntent().getSerializableExtra("model");
@@ -43,14 +47,11 @@ public class ActivityWaterView extends AppCompatActivity {
         box4 = findViewById(R.id.water_checkBox4);
         box5 = findViewById(R.id.water_checkBox5);
 
-
-
         imgview.setImageResource(receivedModel.getImage());
         name.setText(receivedModel.getName());
         desc.setText(receivedModel.getPlan());
 
-
-        ApplicationClass app = (ApplicationClass) this.getApplication();
+        imgview.setImageResource(app.map.get(name.getText()));
 
 
         for (ModelChecklist model: app.checklistsList) {
@@ -68,6 +69,12 @@ public class ActivityWaterView extends AppCompatActivity {
         box4.setText(targetObject.checklist.get(3));
         box5.setText(targetObject.checklist.get(4));
 
+
+        TextView contact1 = findViewById(R.id.cont1);
+        contact1.setText(app.contactList.get(0).getContactName() + " : " + app.contactList.get(0).getContactPhoneNumber());
+
+        TextView contact2= findViewById(R.id.cont2);
+        contact2.setText(app.contactList.get(1).getContactName() + " : " + app.contactList.get(1).getContactPhoneNumber());
 
         if(targetObject.checklist.get(0).charAt(targetObject.checklist.get(0).length()-1) == '1')
             box1.setChecked(true);

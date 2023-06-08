@@ -118,4 +118,55 @@ public class Repository {
         });
 
     }
+
+    public void getContacts(ExecutorService srv, Handler uiHandler) {
+
+
+        srv.submit(()->{
+            try {
+
+                URL url = new URL("http://10.0.2.2:8080/disasterprep/emergencycontacts");
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                String line = "";
+                StringBuilder buffer = new StringBuilder();
+
+                while((line = reader.readLine()) != null){
+                    buffer.append(line);
+                }
+
+
+                JSONArray arr = new JSONArray(buffer.toString());
+                List<ModelContact> data = new ArrayList<>();
+
+                for (int i = 0; i < arr.length(); i++) {
+
+                    JSONObject obj = arr.getJSONObject(i);
+                    ModelContact temp = new ModelContact(obj.getString("contactName"), obj.getString("contactPhoneNumber"));
+                    data.add(temp);
+
+                }
+
+                conn.disconnect();
+
+                Message msg = new Message();
+                msg.obj = data;
+                uiHandler.sendMessage(msg);
+
+
+            } catch (MalformedURLException e) {
+                Log.e("DEV",e.toString());
+            } catch (IOException e) {
+                Log.e("DEV",e.toString());
+            } catch (JSONException e) {
+                Log.e("DEV",e.toString());
+            }
+
+        });
+
+    }
+
 }

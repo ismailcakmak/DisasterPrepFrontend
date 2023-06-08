@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<ModelDisaster> modelList = new ArrayList<>();
     List<ModelChecklist> checklistList = new ArrayList<>();
+    List<ModelContact> contactList = new ArrayList<>();
 
     List<ModelDisaster> modelListGeo = new ArrayList<>();
     List<ModelDisaster> modelListWater = new ArrayList<>();
@@ -66,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
+    Handler myhandler2 = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(@NonNull Message msg) {
+
+            contactList = (List<ModelContact>) msg.obj;
+            app.contactList = (ArrayList<ModelContact>) contactList;
+
+            return true;
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         Repository myrepo = new Repository();
         myrepo.getDisasterList(app.srv, myhandler);
         myrepo.getCheckList(app.srv, myhandler1);
+        myrepo.getContacts(app.srv,myhandler2);
 
         geoButton.setOnClickListener(v -> {
             FragmentGeological geoFrament = new FragmentGeological(modelListGeo);
