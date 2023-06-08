@@ -2,16 +2,25 @@ package com.example.disasterprepfrontend;
 
 import java.io.Serializable;
 
-public class ModelGeological implements Serializable {
+public class ModelDisaster implements Serializable {
 
     private String name;
     private String desc;
     private int image;
+    private String plan;
 
-    public ModelGeological(Integer image, String desc, String name) {
+    public ModelDisaster(String name, String desc, String plan) {
         this.name = name;
         this.desc = desc;
-        this.image = image;
+        this.plan = plan;
+    }
+
+    public String getPlan() {
+        return plan;
+    }
+
+    public void setPlan(String plan) {
+        this.plan = plan;
     }
 
     public String getName() {
@@ -37,4 +46,6 @@ public class ModelGeological implements Serializable {
     public void setImage(int image) {
         this.image = image;
     }
+
+
 }

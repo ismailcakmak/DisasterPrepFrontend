@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityGeoView">
+    tools:context=".ActivityWaterView">
 
     <ImageView
-        android:id="@+id/imgview_act2"
+        android:id="@+id/imgview_act3"
         android:layout_width="81dp"
         android:layout_height="142dp"
         android:contentDescription="@null"
@@ -23,49 +23,17 @@
         tools:layout_editor_absoluteY="159dp">
 
         <TextView
-            android:id="@+id/name_act2"
+            android:id="@+id/name_act3"
             android:layout_width="94dp"
             android:layout_height="34dp"
             android:text="Disaster"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/desc_act2"
+            android:id="@+id/desc_act3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Disaster Description" />
-
-
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-
 
     </LinearLayout>
 
